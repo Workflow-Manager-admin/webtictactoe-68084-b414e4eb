@@ -1,0 +1,246 @@
+/* CSS Variables for Theme Management */
+:root {
+  --primary: #1976d2;
+  --secondary: #388e3c;
+  --accent: #fbc02d;
+
+  /* Light theme colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #282c34;
+  --text-secondary: #61dafb;
+  --border-color: #e9ecef;
+  --button-bg: #1976d2;
+  --button-text: #ffffff;
+}
+
+[data-theme="dark"] {
+  /* Dark theme colors */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #282c34;
+  --text-primary: #ffffff;
+  --text-secondary: #61dafb;
+  --border-color: #404040;
+  --button-bg: #0056b3;
+  --button-text: #ffffff;
+}
+
+.App {
+  text-align: center;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: var(--bg-secondary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.App-link {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  opacity: 0.9;
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .theme-toggle {
+    top: 10px;
+    right: 10px;
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}
+
+/* --- TIC TAC TOE GAME --- */
+
+.ttt-container {
+  margin: 0 auto;
+  max-width: 360px;
+  background: var(--bg-secondary);
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(25, 118, 210, 0.12);
+  padding: 32px 18px 24px 18px;
+  margin-top: 6vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ttt-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+
+.ttt-status {
+  margin-bottom: 18px;
+  font-size: 1.17rem;
+  font-weight: 500;
+  min-height: 28px;
+  transition: color 0.18s;
+}
+
+.ttt-board {
+  display: grid;
+  grid-template-columns: repeat(3, 64px);
+  grid-template-rows: repeat(3, 64px);
+  gap: 7px;
+  padding: 7px;
+  background: #fff;
+  border-radius: 13px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 14px rgba(25, 118, 210, 0.03);
+  margin-bottom: 20px;
+  transition: box-shadow 0.18s;
+}
+
+.ttt-square {
+  background: var(--bg-secondary);
+  border: 2.3px solid var(--border-color);
+  border-radius: 7px;
+  font-size: 2.15rem;
+  font-weight: 700;
+  color: var(--primary);
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
+  box-shadow: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.18s, border-color 0.18s, background 0.18s;
+  user-select: none;
+}
+
+.ttt-square:focus {
+  border-color: var(--accent);
+}
+
+.ttt-square:hover {
+  border-color: var(--primary);
+  background: #f3f9fd;
+}
+
+.ttt-square[aria-label*="X"] {
+  color: var(--primary);
+}
+.ttt-square[aria-label*="O"] {
+  color: var(--secondary);
+}
+
+.ttt-restart-btn {
+  background: var(--secondary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 12px;
+  margin-bottom: 0;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(56, 142, 60, 0.11);
+  letter-spacing: 0.02em;
+  transition: background 0.16s;
+}
+.ttt-restart-btn:hover {
+  background: var(--accent);
+  color: #222;
+}
+
+@media (max-width: 490px) {
+  .ttt-container {
+    max-width: 99vw;
+    padding: 12vw 2vw 6vw 2vw;
+    margin-top: 3vw;
+  }
+  .ttt-board {
+    grid-template-columns: repeat(3, 20vw);
+    grid-template-rows: repeat(3, 20vw);
+    gap: 3vw;
+    padding: 2vw;
+    min-width: 0;
+    min-height: 0;
+  }
+  .ttt-square {
+    width: 20vw;
+    height: 20vw;
+    font-size: 8vw;
+  }
+}
+
+/* Minimal, subtle credits at bottom of container */
+.ttt-credits {
+  margin-top: 24px;
+  font-size: 13px;
+  color: #bbb;
+  letter-spacing: 0.01em;
+}
+
+/* App background for subtle effect */
+.App {
+  background: var(--bg-primary);
+  min-height: 100vh;
+  width: 100vw;
+  transition: background 0.2s;
+}
+
